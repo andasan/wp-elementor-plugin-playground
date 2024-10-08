@@ -7,8 +7,6 @@ jQuery(document).ready(function($) {
         var order = $eventList.data('order') || 'DESC';
         var apiUrl = $eventList.data('api-url');
 
-        console.log('Loading events:', { layout, numberOfEvents, orderBy, order, apiUrl });
-
         // Add loading UI
         $eventList.append('<div class="ciccc-event-loading"><div class="ciccc-event-loading-spinner"></div><p>Loading events...</p></div>');
 
@@ -22,7 +20,6 @@ jQuery(document).ready(function($) {
                 api_url: apiUrl
             },
             success: function(events) {
-                console.log('Received events:', events.length);
                 var html = '';
                 events.forEach(function(event) {
                     html += createEventCard(event);
@@ -80,7 +77,6 @@ jQuery(document).ready(function($) {
                 initSlider($eventList);
                 break;
             default:
-                console.warn('Unknown layout:', layout);
                 applyGridLayout($eventList); // Default to grid
         }
     }
@@ -152,8 +148,28 @@ jQuery(document).ready(function($) {
             ]
         });
 
+        // Set equal heights for all slides
+        setEqualHeights($eventList);
+
+        // Reapply equal heights on window resize
+        $(window).on('resize', function() {
+            setEqualHeights($eventList);
+        });
+
         // Apply arrow position class
         $eventList.addClass('ciccc-event-list-arrow-' + arrowPosition);
+    }
+
+    function setEqualHeights($eventList) {
+        var maxHeight = 0;
+        $eventList.find('.ciccc-event-card').height('auto'); // Reset height
+
+        $eventList.find('.ciccc-event-card').each(function() {
+            var cardHeight = $(this).outerHeight();
+            maxHeight = cardHeight > maxHeight ? cardHeight : maxHeight;
+        });
+
+        $eventList.find('.ciccc-event-card').css('max-height', maxHeight);
     }
 
     // Initialize the events loading

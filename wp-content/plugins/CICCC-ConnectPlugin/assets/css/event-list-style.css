@@ -110,11 +110,6 @@
 .ciccc-event-card p:nth-of-type(4)::before { content: "\f237"; } /* Price tag icon */
 .ciccc-event-card p:nth-of-type(5)::before { content: "\f318"; } /* Category icon */
 
-/* Slider Layout Styles */
-.ciccc-event-list[data-layout="slider"] {
-    /* Slider styles will be handled by Slick */
-}
-
 /* Slick slider custom styles */
 .slick-slide {
     margin: 0 10px;
@@ -122,6 +117,7 @@
 
 .slick-list {
     margin: 0 -10px;
+    padding: 20px 0 !important;
 }
 
 .slick-dots {
@@ -254,4 +250,26 @@
 .ciccc-event-list[data-arrow-position="inside"] .slick-next {
     right: 10px;
     z-index: 1;
+}
+
+.ciccc-event-list[data-layout="slider"] .slick-track {
+    display: flex !important;
+}
+
+.ciccc-event-list[data-layout="slider"] .slick-slide {
+    height: auto;
+    display: flex;
+    align-items: stretch;
+}
+
+.ciccc-event-list[data-layout="slider"] .ciccc-event-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ciccc-event-list[data-layout="slider"] .ciccc-event-card-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
