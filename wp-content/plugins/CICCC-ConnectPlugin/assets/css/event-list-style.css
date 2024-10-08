@@ -14,6 +14,15 @@
     grid-template-columns: 1fr;
 }
 
+.event-start,
+.event-end,
+.event-location,
+.event-price,
+.event-category {
+    display: flex;
+    align-items: flex-start;
+}
+
 .ciccc-event-list[data-layout="list"] .ciccc-event-card {
     display: flex;
     flex-direction: row;
@@ -45,13 +54,27 @@
 
 .ciccc-event-list[data-layout="list"] .ciccc-event-card-details {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 10px;
 }
 
 .ciccc-event-list[data-layout="list"] .ciccc-event-card-details p {
+    display: flex;
+    align-items: flex-start;
     margin: 0;
-    flex-basis: calc(50% - 5px);
+}
+
+.ciccc-event-list[data-layout="list"] .ciccc-event-card-details i {
+    flex-shrink: 0;
+    margin-right: 10px;
+    color: #0073aa;
+    font-size: 1.2em;
+}
+
+.ciccc-event-list[data-layout="list"] .ciccc-event-card-details span {
+    display: inline-block;
+    padding-left: 26px; /* Adjust this value to match your icon width + margin */
+    text-indent: -26px; /* This creates the indentation effect */
 }
 
 .ciccc-event-card {
@@ -98,17 +121,22 @@
 }
 
 /* Add icons to event details */
-.ciccc-event-card p::before {
+.ciccc-event-card p::before,
+.ciccc-event-card .dashicons {
     font-family: 'dashicons'; /* WordPress built-in icon font */
+    font-size: 16px;
     margin-right: 5px;
+    margin-top: 5px;
+    width: 20px;
+    min-width: 20px;
     color: #0073aa; /* WordPress blue color */
 }
 
-.ciccc-event-card p:nth-of-type(1)::before { content: "\f145"; } /* Calendar icon for start date */
-.ciccc-event-card p:nth-of-type(2)::before { content: "\f469"; } /* Clock icon for end date */
-.ciccc-event-card p:nth-of-type(3)::before { content: "\f230"; } /* Location icon */
-.ciccc-event-card p:nth-of-type(4)::before { content: "\f237"; } /* Price tag icon */
-.ciccc-event-card p:nth-of-type(5)::before { content: "\f318"; } /* Category icon */
+/* .ciccc-event-card p:nth-of-type(1)::before { content: "\f145"; } Calendar icon for start date */
+/* .ciccc-event-card p:nth-of-type(2)::before { content: "\f469"; } Clock icon for end date */
+/* .ciccc-event-card p:nth-of-type(3)::before { content: "\f230"; } Location icon */
+/* .ciccc-event-card p:nth-of-type(4)::before { content: "\f237"; } Price tag icon */
+/* .ciccc-event-card p:nth-of-type(5)::before { content: "\f318"; } Category icon */
 
 /* Slick slider custom styles */
 .slick-slide {
@@ -234,22 +262,29 @@
 }
 
 /* Custom arrow positions */
+.ciccc-event-list .slick-arrow {
+    position: absolute;
+    z-index: 1;
+}
+
 .ciccc-event-list[data-arrow-position="outside"] .slick-prev {
-    left: -25px;
+    left: -40px;
 }
 
 .ciccc-event-list[data-arrow-position="outside"] .slick-next {
-    right: -25px;
+    right: -40px;
 }
 
 .ciccc-event-list[data-arrow-position="inside"] .slick-prev {
     left: 10px;
-    z-index: 1;
 }
 
 .ciccc-event-list[data-arrow-position="inside"] .slick-next {
     right: 10px;
-    z-index: 1;
+}
+
+.ciccc-event-list[data-arrow-position="custom"] .slick-arrow {
+    transform: translateY(-50%);
 }
 
 .ciccc-event-list[data-layout="slider"] .slick-track {

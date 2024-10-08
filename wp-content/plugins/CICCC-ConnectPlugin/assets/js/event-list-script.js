@@ -49,11 +49,11 @@ jQuery(document).ready(function($) {
         html += '<div class="ciccc-event-card-content">';
         html += '<h3>' + event.name_event + '</h3>';
         html += '<div class="ciccc-event-card-details">';
-        html += '<p class="event-start">Start: ' + formatDate(event.date_event_start) + '</p>';
-        html += '<p class="event-end">End: ' + formatDate(event.date_event_end) + '</p>';
-        html += '<p class="event-location">Location: ' + event.location_event + '</p>';
-        html += '<p class="event-price">Price: $' + event.price_event + '</p>';
-        html += '<p class="event-category">Category: ' + event.category_event + '</p>';
+        html += '<p class="event-start"><i class="dashicons dashicons-calendar-alt"></i><span>Start: ' + formatDate(event.date_event_start) + '</span></p>';
+        html += '<p class="event-end"><i class="dashicons dashicons-clock"></i><span>End: ' + formatDate(event.date_event_end) + '</span></p>';
+        html += '<p class="event-location"><i class="dashicons dashicons-location"></i><span>Location: ' + event.location_event + '</span></p>';
+        html += '<p class="event-price"><i class="dashicons dashicons-tag"></i><span>Price: $' + event.price_event + '</span></p>';
+        html += '<p class="event-category"><i class="dashicons dashicons-category"></i><span>Category: ' + event.category_event + '</span></p>';
         html += '</div>'; // Close ciccc-event-card-details
         html += '</div>'; // Close ciccc-event-card-content
         html += '</div>'; // Close ciccc-event-card
@@ -105,7 +105,7 @@ jQuery(document).ready(function($) {
         var autoplaySpeed = $eventList.data('autoplay-speed') || 3000;
         var pauseOnHover = $eventList.data('pause-on-hover') === 'yes';
         var showArrows = $eventList.data('show-arrows') === 'yes';
-        var arrowPosition = $eventList.data('arrow-position') || 'outside';
+        var arrowPosition = showArrows ? $eventList.data('arrow-position') : null;
 
         // Remove any existing slick initialization
         if ($eventList.hasClass('slick-initialized')) {
@@ -158,6 +158,24 @@ jQuery(document).ready(function($) {
 
         // Apply arrow position class
         $eventList.addClass('ciccc-event-list-arrow-' + arrowPosition);
+
+        if (showArrows && arrowPosition === 'custom') {
+            var leftArrowOffsetX = $eventList.data('left-arrow-offset-x');
+            var leftArrowOffsetY = $eventList.data('left-arrow-offset-y');
+            var rightArrowOffsetX = $eventList.data('right-arrow-offset-x');
+            var rightArrowOffsetY = $eventList.data('right-arrow-offset-y');
+
+            $eventList.find('.slick-prev').css({
+                'left': leftArrowOffsetX,
+                'top': leftArrowOffsetY,
+                'transform': 'translateY(-' + leftArrowOffsetY + ')'
+            });
+            $eventList.find('.slick-next').css({
+                'right': rightArrowOffsetX,
+                'top': rightArrowOffsetY,
+                'transform': 'translateY(-' + rightArrowOffsetY + ')'
+            });
+        }
     }
 
     function setEqualHeights($eventList) {

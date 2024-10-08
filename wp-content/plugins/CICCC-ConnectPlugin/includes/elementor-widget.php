@@ -233,14 +233,91 @@ add_action('elementor/widgets/register', function($widgets_manager) {
                 [
                     'label' => 'Arrow Position',
                     'type' => \Elementor\Controls_Manager::SELECT,
-                    'default' => 'outside',
+                    'default' => 'custom',
                     'options' => [
                         'outside' => 'Outside',
                         'inside' => 'Inside',
+                        'custom' => 'Custom',
                     ],
                     'condition' => [
                         'layout' => 'slider',
                         'show_arrows' => 'yes',
+                    ],
+                ]
+            );
+
+            $this->add_responsive_control(
+                'left_arrow_offset_x',
+                [
+                    'label' => 'Left Arrow Offset X',
+                    'type' => \Elementor\Controls_Manager::SLIDER,
+                    'size_units' => ['px', '%'],
+                    'range' => [
+                        'px' => ['min' => -100, 'max' => 100],
+                        '%' => ['min' => -50, 'max' => 50],
+                    ],
+                    'default' => ['unit' => 'px', 'size' => -25],
+                    'condition' => [
+                        'layout' => 'slider',
+                        'show_arrows' => 'yes',
+                        'arrow_position' => 'custom',
+                    ],
+                ]
+            );
+
+            $this->add_responsive_control(
+                'left_arrow_offset_y',
+                [
+                    'label' => 'Left Arrow Offset Y',
+                    'type' => \Elementor\Controls_Manager::SLIDER,
+                    'size_units' => ['px', '%'],
+                    'range' => [
+                        'px' => ['min' => -100, 'max' => 100],
+                        '%' => ['min' => -50, 'max' => 50],
+                    ],
+                    'default' => ['unit' => '%', 'size' => 50],
+                    'condition' => [
+                        'layout' => 'slider',
+                        'show_arrows' => 'yes',
+                        'arrow_position' => 'custom',
+                    ],
+                ]
+            );
+
+            $this->add_responsive_control(
+                'right_arrow_offset_x',
+                [
+                    'label' => 'Right Arrow Offset X',
+                    'type' => \Elementor\Controls_Manager::SLIDER,
+                    'size_units' => ['px', '%'],
+                    'range' => [
+                        'px' => ['min' => -100, 'max' => 100],
+                        '%' => ['min' => -50, 'max' => 50],
+                    ],
+                    'default' => ['unit' => 'px', 'size' => -25],
+                    'condition' => [
+                        'layout' => 'slider',
+                        'show_arrows' => 'yes',
+                        'arrow_position' => 'custom',
+                    ],
+                ]
+            );
+
+            $this->add_responsive_control(
+                'right_arrow_offset_y',
+                [
+                    'label' => 'Right Arrow Offset Y',
+                    'type' => \Elementor\Controls_Manager::SLIDER,
+                    'size_units' => ['px', '%'],
+                    'range' => [
+                        'px' => ['min' => -100, 'max' => 100],
+                        '%' => ['min' => -50, 'max' => 50],
+                    ],
+                    'default' => ['unit' => '%', 'size' => 50],
+                    'condition' => [
+                        'layout' => 'slider',
+                        'show_arrows' => 'yes',
+                        'arrow_position' => 'custom',
                     ],
                 ]
             );
@@ -268,7 +345,18 @@ add_action('elementor/widgets/register', function($widgets_manager) {
                 $this->add_render_attribute('wrapper', 'data-autoplay-speed', $settings['autoplay_speed'] ?? 3000);
                 $this->add_render_attribute('wrapper', 'data-pause-on-hover', $settings['pause_on_hover'] ?? 'yes');
                 $this->add_render_attribute('wrapper', 'data-show-arrows', $settings['show_arrows'] ?? 'yes');
-                $this->add_render_attribute('wrapper', 'data-arrow-position', $settings['arrow_position'] ?? 'outside');
+                
+                // Only add arrow-related attributes if arrows are enabled
+                if ($settings['show_arrows'] === 'yes') {
+                    $this->add_render_attribute('wrapper', 'data-arrow-position', $settings['arrow_position']);
+                    
+                    if ($settings['arrow_position'] === 'custom') {
+                        $this->add_render_attribute('wrapper', 'data-left-arrow-offset-x', $settings['left_arrow_offset_x']['size'] . $settings['left_arrow_offset_x']['unit']);
+                        $this->add_render_attribute('wrapper', 'data-left-arrow-offset-y', $settings['left_arrow_offset_y']['size'] . $settings['left_arrow_offset_y']['unit']);
+                        $this->add_render_attribute('wrapper', 'data-right-arrow-offset-x', $settings['right_arrow_offset_x']['size'] . $settings['right_arrow_offset_x']['unit']);
+                        $this->add_render_attribute('wrapper', 'data-right-arrow-offset-y', $settings['right_arrow_offset_y']['size'] . $settings['right_arrow_offset_y']['unit']);
+                    }
+                }
             }
 
             ?>
