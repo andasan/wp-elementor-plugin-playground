@@ -3,34 +3,34 @@
     width: 100%;
 }   
 
-.ciccc-event-list {
+{{WRAPPER}} .ciccc-event-list {
     display: grid;
     gap: 30px; /* Increased gap for better spacing */
     position: relative;
     min-height: 200px; /* Ensure there's space for the loading UI */
 }
 
-.ciccc-event-list[data-layout="list"] {
+{{WRAPPER}} .ciccc-event-list[data-layout="list"] {
     grid-template-columns: 1fr;
 }
 
-.event-start,
-.event-end,
-.event-location,
-.event-price,
-.event-category {
+{{WRAPPER}} .event-start,
+{{WRAPPER}} .event-end,
+{{WRAPPER}} .event-location,
+{{WRAPPER}} .event-price,
+{{WRAPPER}} .event-category {
     display: flex;
     align-items: flex-start;
 }
 
-.ciccc-event-list[data-layout="list"] .ciccc-event-card {
+{{WRAPPER}} .ciccc-event-list[data-layout="list"] .ciccc-event-card {
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 20px;
 }
 
-.ciccc-event-list[data-layout="list"] .ciccc-event-card-image-container {
+{{WRAPPER}} .ciccc-event-list[data-layout="list"] .ciccc-event-card-image-container {
     width: 200px;
     height: 150px;
     margin-bottom: 0;
@@ -38,46 +38,46 @@
     flex-shrink: 0;
 }
 
-.ciccc-event-list[data-layout="list"] .ciccc-event-card-content {
+{{WRAPPER}} .ciccc-event-list[data-layout="list"] .ciccc-event-card-content {
     flex-grow: 1;
 }
 
-.ciccc-event-list[data-layout="list"] .ciccc-event-card h3 {
+{{WRAPPER}} .ciccc-event-list[data-layout="list"] .ciccc-event-card h3 {
     margin-top: 0;
     margin-bottom: 10px;
     font-size: 1.3em;
 }
 
-.ciccc-event-list[data-layout="list"] .ciccc-event-card p {
+{{WRAPPER}} .ciccc-event-list[data-layout="list"] .ciccc-event-card p {
     margin-bottom: 5px;
 }
 
-.ciccc-event-list[data-layout="list"] .ciccc-event-card-details {
+{{WRAPPER}} .ciccc-event-list[data-layout="list"] .ciccc-event-card-details {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.ciccc-event-list[data-layout="list"] .ciccc-event-card-details p {
+{{WRAPPER}} .ciccc-event-list[data-layout="list"] .ciccc-event-card-details p {
     display: flex;
     align-items: flex-start;
     margin: 0;
 }
 
-.ciccc-event-list[data-layout="list"] .ciccc-event-card-details i {
+{{WRAPPER}} .ciccc-event-list[data-layout="list"] .ciccc-event-card-details i {
     flex-shrink: 0;
     margin-right: 10px;
     color: #0073aa;
     font-size: 1.2em;
 }
 
-.ciccc-event-list[data-layout="list"] .ciccc-event-card-details span {
+{{WRAPPER}} .ciccc-event-list[data-layout="list"] .ciccc-event-card-details span {
     display: inline-block;
     padding-left: 26px; /* Adjust this value to match your icon width + margin */
     text-indent: -26px; /* This creates the indentation effect */
 }
 
-.ciccc-event-card {
+{{WRAPPER}} .ciccc-event-card {
     display: flex;
     flex-direction: column;
     height: 100%; /* Make all cards equal height */
@@ -89,40 +89,40 @@
     background-color: #ffffff; /* Ensure white background */
 }
 
-.ciccc-event-card:hover {
+{{WRAPPER}} .ciccc-event-card:hover {
     transform: translateY(-5px); /* Slight lift effect on hover */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Increased shadow on hover */
 }
 
-.ciccc-event-card-image-container {
+{{WRAPPER}} .ciccc-event-card-image-container {
     height: 200px; /* Set a fixed height for the image container */
     overflow: hidden; /* Hide overflow */
     margin-bottom: 15px;
     border-radius: 6px;
 }
 
-.ciccc-event-card img {
+{{WRAPPER}} .ciccc-event-card img {
     width: 100%;
     height: 100% !important;
     object-fit: cover; /* This will maintain aspect ratio and cover the container */
     object-position: center; /* Center the image within the container */
 }
 
-.ciccc-event-card h3 {
+{{WRAPPER}} .ciccc-event-card h3 {
     margin-top: 0;
     margin-bottom: 15px; /* Add some space below the title */
     color: #333; /* Darker color for better readability */
     font-size: 1.2em; /* Slightly larger font size */
 }
 
-.ciccc-event-card p {
+{{WRAPPER}} .ciccc-event-card p {
     margin-bottom: 8px; /* Add space between paragraphs */
     color: #666; /* Slightly lighter text color */
 }
 
 /* Add icons to event details */
-.ciccc-event-card p::before,
-.ciccc-event-card .dashicons {
+{{WRAPPER}} .ciccc-event-card p::before,
+{{WRAPPER}} .ciccc-event-card .dashicons {
     font-family: 'dashicons'; /* WordPress built-in icon font */
     font-size: 16px;
     margin-right: 5px;
@@ -132,58 +132,96 @@
     color: #0073aa; /* WordPress blue color */
 }
 
-/* .ciccc-event-card p:nth-of-type(1)::before { content: "\f145"; } Calendar icon for start date */
-/* .ciccc-event-card p:nth-of-type(2)::before { content: "\f469"; } Clock icon for end date */
-/* .ciccc-event-card p:nth-of-type(3)::before { content: "\f230"; } Location icon */
-/* .ciccc-event-card p:nth-of-type(4)::before { content: "\f237"; } Price tag icon */
-/* .ciccc-event-card p:nth-of-type(5)::before { content: "\f318"; } Category icon */
+/* {{WRAPPER}} .ciccc-event-card p:nth-of-type(1)::before { content: "\f145"; } Calendar icon for start date */
+/* {{WRAPPER}} .ciccc-event-card p:nth-of-type(2)::before { content: "\f469"; } Clock icon for end date */
+/* {{WRAPPER}} .ciccc-event-card p:nth-of-type(3)::before { content: "\f230"; } Location icon */
+/* {{WRAPPER}} .ciccc-event-card p:nth-of-type(4)::before { content: "\f237"; } Price tag icon */
+/* {{WRAPPER}} .ciccc-event-card p:nth-of-type(5)::before { content: "\f318"; } Category icon */
 
 /* Slick slider custom styles */
-.slick-slide {
+{{WRAPPER}} .slick-slide {
     margin: 0 10px;
 }
 
-.slick-list {
+{{WRAPPER}} .slick-list {
     margin: 0 -10px;
     padding: 20px 0 !important;
 }
 
-.slick-dots {
+{{WRAPPER}} .slick-dots {
     bottom: -30px;
 }
 
-.slick-dots li button:before {
-    font-size: 12px;
+{{WRAPPER}} .slick-dots li button,
+{{WRAPPER}} .slick-dots li button:hover,
+{{WRAPPER}} .slick-dots li button:focus {
+    background-color: transparent !important;
 }
 
-.slick-prev, .slick-next {
+{{WRAPPER}} .slick-dots li button:before {
+    color: var(--dot-color, #000000);
+    opacity: 0.25;
+    font-size: var(--dot-size, 10px);
+}
+
+{{WRAPPER}} .slick-dots li.slick-active button:before {
+    color: var(--active-dot-color, #000000);
+    opacity: 0.75;
+}
+
+{{WRAPPER}} .slick-dots li button:hover:before,
+{{WRAPPER}} .slick-dots li button:focus:before {
+    opacity: 1;
+}
+
+/* Force override dots */
+.slick-dots li [type=button]:focus, 
+.slick-dots li [type=button]:hover, 
+.slick-dots li [type=submit]:focus, 
+.slick-dots li [type=submit]:hover, 
+.slick-dots li button:focus, 
+.slick-dots li button:hover {
+    background-color: transparent !important;
+}
+
+/* Additional overrides for active state */
+.slick-dots li.slick-active [type=button]:focus, 
+.slick-dots li.slick-active [type=button]:hover, 
+.slick-dots li.slick-active [type=submit]:focus, 
+.slick-dots li.slick-active [type=submit]:hover, 
+.slick-dots li.slick-active button:focus, 
+.slick-dots li.slick-active button:hover {
+    background-color: transparent !important;
+}
+
+{{WRAPPER}} .slick-prev, {{WRAPPER}} .slick-next {
     z-index: 1;
 }
 
-.slick-prev {
+{{WRAPPER}} .slick-prev {
     left: -25px;
 }
 
-.slick-next {
+{{WRAPPER}} .slick-next {
     right: -25px;
 }
 
 @media (max-width: 768px) {
-    .slick-prev {
+    {{WRAPPER}} .slick-prev {
         left: 10px;
     }
-    .slick-next {
+    {{WRAPPER}} .slick-next {
         right: 10px;
     }
 }
 
-.ciccc-event-list[data-layout="grid"] {
+{{WRAPPER}} .ciccc-event-list[data-layout="grid"] {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Default to 3 columns, adjust as needed */
     gap: 20px;
 }
 
-.ciccc-event-list[data-layout="list"] .ciccc-event-card {
+{{WRAPPER}} .ciccc-event-list[data-layout="list"] .ciccc-event-card {
     display: flex;
     margin-bottom: 20px;
 }
@@ -262,49 +300,81 @@
 }
 
 /* Custom arrow positions */
-.ciccc-event-list .slick-arrow {
+{{WRAPPER}} .ciccc-event-list .slick-arrow {
     position: absolute;
     z-index: 1;
 }
 
-.ciccc-event-list[data-arrow-position="outside"] .slick-prev {
+{{WRAPPER}} .ciccc-event-list[data-arrow-position="outside"] .slick-prev {
     left: -40px;
 }
 
-.ciccc-event-list[data-arrow-position="outside"] .slick-next {
+{{WRAPPER}} .ciccc-event-list[data-arrow-position="outside"] .slick-next {
     right: -40px;
 }
 
-.ciccc-event-list[data-arrow-position="inside"] .slick-prev {
+{{WRAPPER}} .ciccc-event-list[data-arrow-position="inside"] .slick-prev {
     left: 10px;
 }
 
-.ciccc-event-list[data-arrow-position="inside"] .slick-next {
+{{WRAPPER}} .ciccc-event-list[data-arrow-position="inside"] .slick-next {
     right: 10px;
 }
 
-.ciccc-event-list[data-arrow-position="custom"] .slick-arrow {
+{{WRAPPER}} .ciccc-event-list[data-arrow-position="custom"] .slick-arrow {
     transform: translateY(-50%);
 }
 
-.ciccc-event-list[data-layout="slider"] .slick-track {
+{{WRAPPER}} .ciccc-event-list[data-layout="slider"] .slick-track {
     display: flex !important;
 }
 
-.ciccc-event-list[data-layout="slider"] .slick-slide {
+{{WRAPPER}} .ciccc-event-list[data-layout="slider"] .slick-slide {
     height: auto;
     display: flex;
     align-items: stretch;
 }
 
-.ciccc-event-list[data-layout="slider"] .ciccc-event-card {
+{{WRAPPER}} .ciccc-event-list[data-layout="slider"] .ciccc-event-card {
     height: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.ciccc-event-list[data-layout="slider"] .ciccc-event-card-content {
+{{WRAPPER}} .ciccc-event-list[data-layout="slider"] .ciccc-event-card-content {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+}
+
+/* Arrow styles */
+{{WRAPPER}} .slick-prev,
+{{WRAPPER}} .slick-next {
+    transition: color 0.3s ease;
+}
+
+{{WRAPPER}} .slick-prev:before,
+{{WRAPPER}} .slick-next:before {
+    color: inherit;
+}
+
+/* Dot styles */
+{{WRAPPER}} .slick-dots li button:before {
+    transition: color 0.3s ease;
+}
+
+{{WRAPPER}} .slick-dots li button:hover:before,
+{{WRAPPER}} .slick-dots li button:focus:before {
+    opacity: 1;
+}
+
+/* Force override for button hover states */
+{{WRAPPER}} .slick-prev:hover,
+{{WRAPPER}} .slick-prev:focus,
+{{WRAPPER}} .slick-next:hover,
+{{WRAPPER}} .slick-next:focus,
+{{WRAPPER}} .slick-dots li button:hover,
+{{WRAPPER}} .slick-dots li button:focus {
+    background-color: transparent !important;
+    outline: none !important;
 }

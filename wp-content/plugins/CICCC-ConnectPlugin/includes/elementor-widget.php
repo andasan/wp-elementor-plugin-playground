@@ -323,6 +323,302 @@ add_action('elementor/widgets/register', function($widgets_manager) {
             );
 
             $this->end_controls_section();
+
+            // Card Styling
+            $this->start_controls_section(
+                'card_style_section',
+                [
+                    'label' => 'Card Styling',
+                    'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+                ]
+            );
+
+            $this->add_control(
+                'card_background_color',
+                [
+                    'label' => 'Background Color',
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .ciccc-event-card' => 'background-color: {{VALUE}};',
+                    ],
+                ]
+            );
+
+            $this->add_group_control(
+                \Elementor\Group_Control_Border::get_type(),
+                [
+                    'name' => 'card_border',
+                    'label' => 'Border',
+                    'selector' => '{{WRAPPER}} .ciccc-event-card',
+                ]
+            );
+
+            $this->add_control(
+                'card_border_radius',
+                [
+                    'label' => 'Border Radius',
+                    'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                    'size_units' => ['px', '%'],
+                    'selectors' => [
+                        '{{WRAPPER}} .ciccc-event-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+
+            $this->add_responsive_control(
+                'card_padding',
+                [
+                    'label' => 'Padding',
+                    'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                    'size_units' => ['px', 'em', '%'],
+                    'selectors' => [
+                        '{{WRAPPER}} .ciccc-event-card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+
+            $this->end_controls_section();
+
+            // Title Styling
+            $this->start_controls_section(
+                'title_style_section',
+                [
+                    'label' => 'Title Styling',
+                    'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+                ]
+            );
+
+            $this->add_control(
+                'title_color',
+                [
+                    'label' => 'Color',
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .ciccc-event-card h3' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
+
+            $this->add_group_control(
+                \Elementor\Group_Control_Typography::get_type(),
+                [
+                    'name' => 'title_typography',
+                    'label' => 'Typography',
+                    'selector' => '{{WRAPPER}} .ciccc-event-card h3',
+                ]
+            );
+
+            $this->end_controls_section();
+
+            // Details Styling
+            $this->start_controls_section(
+                'details_style_section',
+                [
+                    'label' => 'Details Styling',
+                    'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+                ]
+            );
+
+            $this->add_control(
+                'details_color',
+                [
+                    'label' => 'Text Color',
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .ciccc-event-card-details span' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
+
+            $this->add_group_control(
+                \Elementor\Group_Control_Typography::get_type(),
+                [
+                    'name' => 'details_typography',
+                    'label' => 'Typography',
+                    'selector' => '{{WRAPPER}} .ciccc-event-card-details span',
+                ]
+            );
+
+            $this->add_control(
+                'icon_color',
+                [
+                    'label' => 'Icon Color',
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .ciccc-event-card-details i' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
+
+            $this->end_controls_section();
+
+            // Slider Arrow Styling
+            $this->start_controls_section(
+                'arrow_style_section',
+                [
+                    'label' => 'Slider Arrow Styling',
+                    'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+                    'condition' => [
+                        'layout' => 'slider',
+                        'show_arrows' => 'yes',
+                    ],
+                ]
+            );
+
+            $this->start_controls_tabs('arrow_style_tabs');
+
+            // Normal state
+            $this->start_controls_tab(
+                'arrow_style_normal',
+                ['label' => 'Normal']
+            );
+
+            $this->add_control(
+                'arrow_color',
+                [
+                    'label' => 'Color',
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .slick-prev:before, {{WRAPPER}} .slick-next:before' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
+
+            $this->end_controls_tab();
+
+            // Hover state
+            $this->start_controls_tab(
+                'arrow_style_hover',
+                ['label' => 'Hover']
+            );
+
+            $this->add_control(
+                'arrow_color_hover',
+                [
+                    'label' => 'Color',
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .slick-prev:hover:before, {{WRAPPER}} .slick-next:hover:before' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
+
+            $this->end_controls_tab();
+
+            $this->end_controls_tabs();
+
+            $this->add_control(
+                'arrow_size',
+                [
+                    'label' => 'Size',
+                    'type' => \Elementor\Controls_Manager::SLIDER,
+                    'size_units' => ['px'],
+                    'range' => [
+                        'px' => [
+                            'min' => 10,
+                            'max' => 50,
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .slick-prev:before, {{WRAPPER}} .slick-next:before' => 'font-size: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+            );
+
+            $this->end_controls_section();
+
+            // Slider Pagination Styling
+            $this->start_controls_section(
+                'pagination_style_section',
+                [
+                    'label' => 'Slider Pagination Styling',
+                    'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+                    'condition' => [
+                        'layout' => 'slider',
+                    ],
+                ]
+            );
+
+            $this->start_controls_tabs('dot_style_tabs');
+
+            // Normal state
+            $this->start_controls_tab(
+                'dot_style_normal',
+                ['label' => 'Normal']
+            );
+
+            $this->add_control(
+                'dot_color',
+                [
+                    'label' => 'Color',
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .slick-dots li button:before' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
+
+            $this->end_controls_tab();
+
+            // Hover state
+            $this->start_controls_tab(
+                'dot_style_hover',
+                ['label' => 'Hover']
+            );
+
+            $this->add_control(
+                'dot_color_hover',
+                [
+                    'label' => 'Color',
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .slick-dots li button:hover:before, {{WRAPPER}} .slick-dots li button:focus:before' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
+
+            $this->end_controls_tab();
+
+            // Active state
+            $this->start_controls_tab(
+                'dot_style_active',
+                ['label' => 'Active']
+            );
+
+            $this->add_control(
+                'active_dot_color',
+                [
+                    'label' => 'Color',
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .slick-dots li.slick-active button:before' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
+
+            $this->end_controls_tab();
+
+            $this->end_controls_tabs();
+
+            $this->add_control(
+                'dot_size',
+                [
+                    'label' => 'Size',
+                    'type' => \Elementor\Controls_Manager::SLIDER,
+                    'size_units' => ['px'],
+                    'range' => [
+                        'px' => [
+                            'min' => 5,
+                            'max' => 20,
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .slick-dots li button:before' => 'font-size: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+            );
+
+            $this->end_controls_section();
         }
 
         protected function render() {
@@ -347,16 +643,24 @@ add_action('elementor/widgets/register', function($widgets_manager) {
                 $this->add_render_attribute('wrapper', 'data-show-arrows', $settings['show_arrows'] ?? 'yes');
                 
                 // Only add arrow-related attributes if arrows are enabled
-                if ($settings['show_arrows'] === 'yes') {
-                    $this->add_render_attribute('wrapper', 'data-arrow-position', $settings['arrow_position']);
+                if (($settings['show_arrows'] ?? 'yes') === 'yes') {
+                    $this->add_render_attribute('wrapper', 'data-arrow-position', $settings['arrow_position'] ?? 'outside');
                     
-                    if ($settings['arrow_position'] === 'custom') {
-                        $this->add_render_attribute('wrapper', 'data-left-arrow-offset-x', $settings['left_arrow_offset_x']['size'] . $settings['left_arrow_offset_x']['unit']);
-                        $this->add_render_attribute('wrapper', 'data-left-arrow-offset-y', $settings['left_arrow_offset_y']['size'] . $settings['left_arrow_offset_y']['unit']);
-                        $this->add_render_attribute('wrapper', 'data-right-arrow-offset-x', $settings['right_arrow_offset_x']['size'] . $settings['right_arrow_offset_x']['unit']);
-                        $this->add_render_attribute('wrapper', 'data-right-arrow-offset-y', $settings['right_arrow_offset_y']['size'] . $settings['right_arrow_offset_y']['unit']);
+                    if (($settings['arrow_position'] ?? 'outside') === 'custom') {
+                        $this->add_render_attribute('wrapper', 'data-left-arrow-offset-x', $settings['left_arrow_offset_x']['size'] ?? 0 . ($settings['left_arrow_offset_x']['unit'] ?? 'px'));
+                        $this->add_render_attribute('wrapper', 'data-left-arrow-offset-y', $settings['left_arrow_offset_y']['size'] ?? 0 . ($settings['left_arrow_offset_y']['unit'] ?? 'px'));
+                        $this->add_render_attribute('wrapper', 'data-right-arrow-offset-x', $settings['right_arrow_offset_x']['size'] ?? 0 . ($settings['right_arrow_offset_x']['unit'] ?? 'px'));
+                        $this->add_render_attribute('wrapper', 'data-right-arrow-offset-y', $settings['right_arrow_offset_y']['size'] ?? 0 . ($settings['right_arrow_offset_y']['unit'] ?? 'px'));
                     }
                 }
+
+                $this->add_render_attribute('wrapper', 'data-arrow-color', $settings['arrow_color'] ?? '#000000');
+                $this->add_render_attribute('wrapper', 'data-arrow-color-hover', $settings['arrow_color_hover'] ?? '#666666');
+                $this->add_render_attribute('wrapper', 'data-arrow-size', $settings['arrow_size']['size'] ?? 20);
+                $this->add_render_attribute('wrapper', 'data-dot-color', $settings['dot_color'] ?? '#000000');
+                $this->add_render_attribute('wrapper', 'data-dot-color-hover', $settings['dot_color_hover'] ?? '#666666');
+                $this->add_render_attribute('wrapper', 'data-active-dot-color', $settings['active_dot_color'] ?? '#000000');
+                $this->add_render_attribute('wrapper', 'data-dot-size', $settings['dot_size']['size'] ?? 10);
             }
 
             ?>

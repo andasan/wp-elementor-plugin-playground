@@ -159,23 +159,46 @@ jQuery(document).ready(function($) {
         // Apply arrow position class
         $eventList.addClass('ciccc-event-list-arrow-' + arrowPosition);
 
-        if (showArrows && arrowPosition === 'custom') {
-            var leftArrowOffsetX = $eventList.data('left-arrow-offset-x');
-            var leftArrowOffsetY = $eventList.data('left-arrow-offset-y');
-            var rightArrowOffsetX = $eventList.data('right-arrow-offset-x');
-            var rightArrowOffsetY = $eventList.data('right-arrow-offset-y');
+        // Apply custom arrow styles
+        if (showArrows) {
+            var arrowColor = $eventList.data('arrow-color');
+            var arrowColorHover = $eventList.data('arrow-color-hover');
+            var arrowSize = $eventList.data('arrow-size');
 
-            $eventList.find('.slick-prev').css({
-                'left': leftArrowOffsetX,
-                'top': leftArrowOffsetY,
-                'transform': 'translateY(-' + leftArrowOffsetY + ')'
+            $eventList.find('.slick-prev, .slick-next').css({
+                'color': arrowColor,
+                'font-size': arrowSize + 'px'
             });
-            $eventList.find('.slick-next').css({
-                'right': rightArrowOffsetX,
-                'top': rightArrowOffsetY,
-                'transform': 'translateY(-' + rightArrowOffsetY + ')'
-            });
+
+            // Add hover effect
+            $eventList.find('.slick-prev, .slick-next').hover(
+                function() { $(this).css('color', arrowColorHover); },
+                function() { $(this).css('color', arrowColor); }
+            );
+
+            // ... existing arrow positioning code ...
         }
+
+        // Apply custom pagination styles
+        var dotColor = $eventList.data('dot-color');
+        var activeDotColor = $eventList.data('active-dot-color');
+        var dotColorHover = $eventList.data('dot-color-hover');
+        var dotSize = $eventList.data('dot-size');
+
+        $eventList.find('.slick-dots li button:before').css({
+            'color': dotColor,
+            'font-size': dotSize + 'px'
+        });
+
+        $eventList.find('.slick-dots li.slick-active button:before').css({
+            'color': activeDotColor
+        });
+
+        // Add hover effect for dots
+        $eventList.find('.slick-dots li button').hover(
+            function() { $(this).css('color', dotColorHover); },
+            function() { $(this).css('color', $(this).parent().hasClass('slick-active') ? activeDotColor : dotColor); }
+        );
     }
 
     function setEqualHeights($eventList) {

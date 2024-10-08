@@ -42,3 +42,8 @@ function ciccc_elementor_init() {
     }
 }
 add_action('plugins_loaded', 'ciccc_elementor_init');
+
+// Increased priority to 100
+add_action('wp_enqueue_scripts', function() {
+    wp_enqueue_style('ciccc-event-list-style', plugin_dir_url(__FILE__) . 'assets/css/event-list-style.css', array(), '1.0', 'all');
+}, 9999);  // Very high priority to load after most other styles
