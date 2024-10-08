@@ -65,16 +65,12 @@ composer.phar
 !.env.example
 
 # WordPress plugin specific ignores
-# Uncomment the following line if you want to ignore your entire plugins directory
-# wp-content/plugins/
+wp-content/plugins/*
+!wp-content/plugins/CICCC-ConnectPlugin/
 
-# Uncomment the following line if you want to ignore your entire themes directory
-# wp-content/themes/
-
-# If you're developing a theme or plugin, you might want to track it
-# In that case, negate the ignore for your specific theme/plugin:
-# !wp-content/themes/your-custom-theme/
-# !wp-content/plugins/your-custom-plugin/
+# WordPress theme specific ignores
+wp-content/themes/*
+!/wp-content/themes/your-custom-theme/
 
 # Ignore specific plugins (example)
 wp-content/plugins/akismet/
@@ -95,21 +91,6 @@ wp-content/themes/index.php
 /readme.html
 /wp-*.php
 /xmlrpc.php
-
-# Ignore wp-content directory
-/wp-content/
-
-# But allow specific directories within wp-content
-!/wp-content/plugins/
-!/wp-content/themes/
-
-# Ignore everything in the "plugins" directory, except your specific plugin(s)
-/wp-content/plugins/*
-!/wp-content/plugins/CICCC-ConnectPlugin/
-
-# Ignore everything in the "themes" directory, except your specific theme(s)
-/wp-content/themes/*
-!/wp-content/themes/your-custom-theme/
 
 # Ignore any potential local configuration files
 local-config.php
