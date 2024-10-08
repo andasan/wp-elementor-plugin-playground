@@ -1,0 +1,115 @@
+# WordPress core files
+wp-admin/
+wp-includes/
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/backup-db/
+wp-content/backups/
+wp-content/blogs.dir/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/plugins/hello.php
+
+# Configuration files
+wp-config.php
+wp-config-local.php
+.htaccess
+
+# Log files
+*.log
+error_log
+access_log
+
+# Cache files
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
+wp-content/cache/
+wp-content/backups/
+
+# Temporary files
+tmp/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE and Editor folders
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+.idea/
+.vscode/
+
+# Node modules and build files
+node_modules/
+npm-debug.log
+yarn-error.log
+/build/
+
+# Composer files
+vendor/
+composer.phar
+
+# Compiled CSS and JavaScript files
+*.css.map
+*.js.map
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# WordPress plugin specific ignores
+# Uncomment the following line if you want to ignore your entire plugins directory
+# wp-content/plugins/
+
+# Uncomment the following line if you want to ignore your entire themes directory
+# wp-content/themes/
+
+# If you're developing a theme or plugin, you might want to track it
+# In that case, negate the ignore for your specific theme/plugin:
+# !wp-content/themes/your-custom-theme/
+# !wp-content/plugins/your-custom-plugin/
+
+# Ignore specific plugins (example)
+wp-content/plugins/akismet/
+wp-content/plugins/hello-dolly/
+
+# Ignore specific themes (example)
+wp-content/themes/twenty*/
+
+# Ignore WordPress core files
+wp-content/index.php
+wp-content/languages
+wp-content/plugins/index.php
+wp-content/themes/index.php
+
+# Ignore WordPress core files
+/index.php
+/license.txt
+/readme.html
+/wp-*.php
+/xmlrpc.php
+
+# Ignore wp-content directory
+/wp-content/
+
+# But allow specific directories within wp-content
+!/wp-content/plugins/
+!/wp-content/themes/
+
+# Ignore everything in the "plugins" directory, except your specific plugin(s)
+/wp-content/plugins/*
+!/wp-content/plugins/CICCC-ConnectPlugin/
+
+# Ignore everything in the "themes" directory, except your specific theme(s)
+/wp-content/themes/*
+!/wp-content/themes/your-custom-theme/
+
+# Ignore any potential local configuration files
+local-config.php
