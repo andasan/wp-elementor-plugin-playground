@@ -3,7 +3,7 @@
  * Plugin Name: CICCC Connect Plugin for Elementor
  * Description: A customizable event list plugin for CICCC with Elementor integration
  * Version: 1.0
- * Author: Your Name
+ * Author: andasan
  */
 
 if (!defined('ABSPATH')) {
